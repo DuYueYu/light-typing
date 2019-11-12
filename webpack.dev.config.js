@@ -31,7 +31,8 @@ module.exports = merge(webpackBaseConfig, {
             filename: 'vendors.js'
         }),
         new HtmlWebpackPlugin({
-            filename: 'index.dev.html',
+            //最后交给后端的只能是生产版本，开发版本是给自己看的
+            filename: 'index.ejs',
             template: './src/template/index.ejs',
             inject: false
         })
