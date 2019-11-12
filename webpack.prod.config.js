@@ -5,9 +5,13 @@ const merge = require('webpack-merge');
 const webpackBaseConfig = require('./webpack.base.config.js');
 const fs = require('fs');
 
-fs.open('./src/config/env.js', 'w', function (err, fd) {
-    const buf = 'export default "production";';
-    fs.write(fd, buf, 0, buf.length, 0, function (err, written, buffer){});
+fs.open('./src/config/env.js', 'a', (err, fd) => {
+    if (err) return err;
+    const buf = new Buffer('export default "production";');
+    fs.write(fd, buf, 0, buf.length, null, function cb(err, written, buffer) {
+        if (err) return err;
+        console.log('生产环境：已写入env.js');
+    });
 });
 
 module.exports = merge(webpackBaseConfig, {
