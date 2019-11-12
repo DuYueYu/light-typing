@@ -1,6 +1,6 @@
 <template>
   <div>
-    <HeadLightTyping :logined="false"></HeadLightTyping>
+    <HeadLightTyping></HeadLightTyping>
     <router-view></router-view>
     <FooterLightTyping></FooterLightTyping>
   </div>

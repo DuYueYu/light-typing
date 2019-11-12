@@ -14,9 +14,9 @@ import store from "./vuex.js"
 
 Vue.use(VueRouter);
 Vue.use(iView);
-Vue.component("FooterLightTyping",FooterLightTyping);
-Vue.component('HeadLightTyping',HeadLightTyping);
-Vue.component('LessonCard',LessonCard);
+Vue.component("FooterLightTyping", FooterLightTyping);
+Vue.component('HeadLightTyping', HeadLightTyping);
+Vue.component('LessonCard', LessonCard);
 
 //vue-router---------------------------
 const RouterConfig = {
@@ -37,14 +37,21 @@ router.afterEach((to, from, next) => {
 });
 
 
-
-
+//本地存储，将部分用户信息持久化：--------------------
+var orignalSetItem = window.localStorage.setItem;
+localStorage.setItem = function (key, newValue) {
+    var setItemEvent = new Event("setItemEvent");
+    setItemEvent.key = key;
+    setItemEvent.newValue = newValue;
+    orignalSetItem.apply(this, arguments);
+    window.dispatchEvent(setItemEvent);
+};
 
 
 //根实例：--------------------------------
 new Vue({
     el: '#app',
     router: router,
-	store: store,
+    store: store,
     render: h => h(App)
 });
