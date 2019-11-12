@@ -32,7 +32,6 @@ module.exports = merge(webpackBaseConfig, {
         }),
         new HtmlWebpackPlugin({
             filename: 'index.dev.html',
-            publicPath: '/dist/',
             template: './src/template/index.ejs',
             inject: false
         })
