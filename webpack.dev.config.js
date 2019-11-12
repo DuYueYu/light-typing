@@ -5,9 +5,13 @@ const merge = require('webpack-merge');
 const webpackBaseConfig = require('./webpack.base.config.js');
 const fs = require('fs');
 
-fs.open('./src/config/env.js', 'w', function (err, fd) {
-    const buf = 'export default "development";';
-    fs.write(fd, buf, 0, 'utf-8', function(err, written, buffer) {});
+fs.open('./src/config/env.js', 'a', (err, fd) => {
+    if (err) return err;
+    const buf = new Buffer('export default "development";');
+    fs.write(fd, buf, 0, buf.length, null, function cb(err, written, buffer) {
+        if (err) return err;
+        console.log('开发环境：已写入env.js');
+    });
 });
 
 module.exports = merge(webpackBaseConfig, {
@@ -27,7 +31,8 @@ module.exports = merge(webpackBaseConfig, {
             filename: 'vendors.js'
         }),
         new HtmlWebpackPlugin({
-            filename: '../index.html',
+            filename: 'index.dev.html',
+            publicPath: '/dist/',
             template: './src/template/index.ejs',
             inject: false
         })
