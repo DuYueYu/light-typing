@@ -48,11 +48,7 @@
           </FormItem>
           <FormItem prop="verifiCode">
             <Input type="text" v-model="formPhoneRigister.verifiCode" placeholder="请输入短信验证码">
-              <Button
-                slot="append"
-                type="primary"
-                @click="handleVerifiCode(formPhoneRigister)"
-              >获取验证码</Button>
+              <Button slot="append" type="primary" @click="handleVerifiCode">获取验证码</Button>
             </Input>
           </FormItem>
           <FormItem prop="password">
@@ -61,7 +57,7 @@
             </Input>
           </FormItem>
           <FormItem>
-            <Button type="primary" @click="handleRegister('formPhoneRigister')" long>注册</Button>
+            <Button type="primary" @click="handlePhoneNumRegister" long>注册</Button>
           </FormItem>
         </Form>
       </TabPane>
@@ -79,14 +75,17 @@
     </div>
   </div>
 </template>
+
 <script>
-/*LoginLightTyping仅仅进行本地的数据验证，例如数据的格式验证，与服务器通信部分交给父组件*/
+import axios from "axios";
+
 export default {
   data() {
     return {
       loginOrRigister: "login",
       currentVerifiCode: "",
       userData: {},
+      verification: {},
       formAccount: {
         type: "account",
         account: "",
@@ -201,11 +200,8 @@ export default {
     };
   },
   methods: {
-    //这里是登陆/注册按钮验证，只有点击登陆按钮才会生效：调用validate规则，同时手动区分登陆/注册类型：
-    //当我点击submit时，validate保证数据（密码、验证码）存在，并保证数据格式正确：
     handleSubmit(loginType) {
       this.$refs[loginType].validate(valid => {
-        //如果数据有效,将其向服务器提交，完成登陆/注册：
         if (valid) {
           var info = this.$data[loginType];
           console.log("info = ", info);
@@ -231,35 +227,77 @@ export default {
         }
       });
     },
-    handleRegister(info) {
-      this.$refs[info].validate(valid => {
-        if (valid) {
-          const user = this.postRigester(info);
-          if (user.id) {
-            this.pushLocalStore("userId", user.id);
-            this.$router.push({ path: "/" });
-          } else {
-            this.$Notice.error({
-              title: "注册失败",
-              desc: "注册失败，请稍作重试。"
+    handlePhoneNumRegister() {
+      this.$refs["formPhoneRigister"].validate(valid => {
+        if (!valid) return false;
+        console.log("valid = ", valid);
+        const info = this.formPhoneRigister;
+        console.log("info = ", info);
+        console.log("this.verification = ", this.verification);
+        if (
+          info.phoneNum == this.verification.phoneNum &&
+          info.verifiCode == this.verification.verifiCode
+        ) {
+          axios
+            .post("/register/register", { info })
+            .then(res => {
+              if (res.data.user.id) {
+                this.pushLocalStore("userId", res.data.user.id);
+                this.$router.push({ path: "/" });
+                this.$Notice.success({
+                  title: "注册成功",
+                  desc: "注册成功，正在跳转。"
+                });
+              } else {
+                this.$Notice.error({
+                  title: "注册失败",
+                  desc: "注册失败，请稍作重试。"
+                });
+              }
+            })
+            .catch(error => {
+              console.log(error);
             });
-          }
+        } else {
+          this.$Notice.error({
+            title: "注册失败",
+            desc: "请检查您的手机号和验证码."
+          });
         }
       });
     },
-    //这部分验证是单独验证，用以验证手机号码，而validate用以登陆按钮：
-    handleVerifiCode(info) {
-      //本地验证是否是手机号：
-      //向服务器提交手机号码，令服务器发送验证短信给用户,获取验证码:
+    handleVerifiCode() {
+      const info = this.formPhoneRigister;
       if (this.isPhoneNumber(info.phoneNum)) {
-        //模拟部分：
-        this.currentVerifiCode = Math.floor(Math.random() * 10000);
-        this.$Notice.success({
-          title: "模拟验证码",
-          desc: "你的验证码是：" + this.currentVerifiCode
-        });
-        //真实部分：
-        this.postRigester(info);
+        const userInfo = { phoneNum: info.phoneNum };
+        console.log("userInfo = ", userInfo);
+        axios
+          .post("/register/verifiCode", { userInfo })
+          .then(res => {
+            const data = res.data;
+            this.verification.phoneNum = data.verification.phoneNum;
+            this.verification.verifiCode = data.verification.verifiCode;
+            this.$Notice.success({
+              title: "验证码",
+              desc: "你的验证码是：" + this.verification.verifiCode
+            });
+          })
+          .catch(error => {
+            console.log(error);
+            switch (error.status) {
+              case 403:
+                this.$Notice.info({
+                  title: "已注册",
+                  desc: "已经注册过了哦。"
+                });
+                break;
+              default:
+                this.$Notice.error({
+                  title: "失败",
+                  desc: "哎呀，出了点问题呢。"
+                });
+            }
+          });
       }
     },
     //向服务器提交登陆/注册信息：
@@ -271,45 +309,32 @@ export default {
         name: "Yates",
         avatar: "url"
       };
-      //真实服务器交互部分：
-      //接口说明，此处为登陆接口:
-      //http动词:POST
-      //url：/login
       axios
-        .post("host/login", { info })
+        .post("/login", { info })
         .then(response => {
           console.log(response);
           return response;
         })
         .catch(error => {
           console.log(error);
-        })
-        .then(() => {
-          console.log("always executed :no response !");
         });
     },
-    //接口说明，此处为注册接口:
-    //发送验证码和注册一同使用本方法：
-    //http动词:POST
-    //url：/register
     postRigester(info) {
+      //真实部分:
+      console.log("info = ", info);
+      axios
+        .post("/register", { info })
+        .then(response => {
+          console.log(response);
+          return response;
+        })
+        .catch(error => {
+          console.log(error);
+        });
       //模拟部分：
       return {
         id: Math.floor(Math.random() * 10000)
       };
-      //真实部分：
-      axios
-        .post("host/register", { info })
-        .then(response => {
-          console.log(response);
-          return response;
-        })
-        .catch(error => {
-          console.log(error);
-        })
-        .then(() => {
-          console.log("always executed :no response !");
-        });
     },
     isPhoneNumber(number) {
       if (number === "") {
