@@ -86,12 +86,14 @@
 </script>
 
 <style scoped lang="less">
-	@myborder: blue solid 2px;
+	@myborder: none;
 
 	.content {
 		min-height: 570px;
 		border: @myborder;
-		margin: 0px 10px;
+        margin: 0px 0px;
+        background: url('/src/images/bg.png') no-repeat;
+        background-size: 100% 100%;
 		.content-summary {}
 		.content-lessonsNav {
 			position: fixed;
@@ -117,6 +119,7 @@
 			width: 85%;
 			right: 10%;
 			.content-lessons-card{
+                opacity: 0.9;
 				margin: 15px 15px;
 				width: 200px;
 				height: 200px;
