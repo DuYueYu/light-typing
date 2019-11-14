@@ -11,9 +11,11 @@ import FooterLightTyping from './components/FooterLightTyping.vue';
 import HeadLightTyping from './components/HeaderLightTyping.vue';
 import LessonCard from './components/LessonCard.vue';
 import store from "./vuex.js"
+import Keyboard from "./components/Keyboard.vue"
 
 Vue.use(VueRouter);
 Vue.use(iView);
+Vue.use(Keyboard);
 Vue.component("FooterLightTyping", FooterLightTyping);
 Vue.component('HeadLightTyping', HeadLightTyping);
 Vue.component('LessonCard', LessonCard);
