@@ -96,7 +96,8 @@ export default {
 		},
 		removeKeypress(e) {
 			var keyDepressed = e.keyCode;
-			const keys = document.getElementById('key-' + keyDepressed);
+            const keys = document.getElementById('key-' + keyDepressed);
+            this.$emit('key-press', keyPressed);
 
 			keys.classList.remove('pressed');
 		}
