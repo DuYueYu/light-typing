@@ -89,7 +89,8 @@ export default {
 
 			console.log(keyPressed);
 			console.log(charPressed);
-			console.log(keys);
+            console.log(keys);
+            this.$emit('key-press', keyPressed);
 
 			keys.classList.add('pressed');
 		},
@@ -104,7 +105,10 @@ export default {
 		window.addEventListener('keydown', this.highlightAndType);
 		window.addEventListener('keyup', this.removeKeypress);
 	},
-	beforeDestroy() {}
+	beforeDestroy() {
+        window.removeEventListener('keydown', this.highlightAndType);
+        window.removeEventListener('keyup', this.removeKeypress);
+    }
 };
 </script>
 
