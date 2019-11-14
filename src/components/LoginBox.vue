@@ -275,28 +275,27 @@ export default {
           .post("/register/verifiCode", { userInfo })
           .then(res => {
             const data = res.data;
-            this.verification.phoneNum = data.verification.phoneNum;
-            this.verification.verifiCode = data.verification.verifiCode;
-            this.$Notice.success({
-              title: "验证码",
-              desc: "你的验证码是：" + this.verification.verifiCode
-            });
+            console.log("data = ", data);
+            if (data.verification) {
+              this.verification.phoneNum = data.verification.phoneNum;
+              this.verification.verifiCode = data.verification.verifiCode;
+              this.$Notice.success({
+                title: "验证码",
+                desc: "你的验证码是：" + this.verification.verifiCode
+              });
+            } else if (data.message === "registered") {
+              this.$Notice.info({
+                title: "已注册",
+                desc: "已经注册过了哦。"
+              });
+            }
           })
           .catch(error => {
             console.log(error);
-            switch (error.status) {
-              case 403:
-                this.$Notice.info({
-                  title: "已注册",
-                  desc: "已经注册过了哦。"
-                });
-                break;
-              default:
-                this.$Notice.error({
-                  title: "失败",
-                  desc: "哎呀，出了点问题呢。"
-                });
-            }
+            this.$Notice.error({
+              title: "失败",
+              desc: "哎呀，出了点问题呢。"
+            });
           });
       }
     },
