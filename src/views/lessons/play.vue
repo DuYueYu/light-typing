@@ -1,7 +1,7 @@
 <template>
 	<Layout class="layout">
 		<Content class="layout-content">
-			<div class="layout-content-intro" v-if="currentLessonStep.type === 'introduction'">
+			<div v-if="currentLessonStep.type === 'introduction'" class="layout-content-intro" >
 				<video controls autoplay>
 					<source :src="currentLessonStep.url" type="video/mp4"></source>
 					<h1>哎呀，视频不见了呢！</h1>
@@ -15,18 +15,21 @@
 				<h1>exercise of {{currentLessonStep.keys}}</h1>
 				<Keyboard></Keyboard>
 			</div>
+            <div v-if="currentLessonStep.type === 'game'" class="layout-content-exercise">
+				<h1>exercise of {{currentLessonStep.keys}}</h1>
+				<Keyboard></Keyboard>
+			</div>
 		</Content>
 	</Layout>
 </template>
 
 
 <script>
-	import Keyboard from "../../components/Keyboard.vue";
 	import lessonDatsFromServer from "../../static/lessonCards.js";
 	
 	export default{
 		components:{
-			Keyboard
+			
 		},
 		data(){
 			return {
