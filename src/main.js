@@ -15,10 +15,11 @@ import Keyboard from "./components/Keyboard.vue"
 
 Vue.use(VueRouter);
 Vue.use(iView);
-Vue.use(Keyboard);
 Vue.component("FooterLightTyping", FooterLightTyping);
 Vue.component('HeadLightTyping', HeadLightTyping);
 Vue.component('LessonCard', LessonCard);
+Vue.component('Keyboard', Keyboard);
+
 
 //vue-router---------------------------
 const RouterConfig = {
