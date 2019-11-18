@@ -1,23 +1,29 @@
+<!--控制controller 的 controller-->
 <template>
   <Layout class="layout">
     <Content class="layout-content">
-      <div v-if="currentLessonStep.type === 'introduction'" class="layout-content-intro">
+      <div v-if="lessonStepInfo.type === 'introduction'" class="layout-content-intro">
+        <VideoController></VideoController>
         <video controls autoplay>
-          <source :src="currentLessonStep.url" type="video/mp4" />
+          <source :src="lessonStepInfo.url" type="video/mp4" />
           <h1>哎呀，视频不见了呢！</h1>
         </video>
       </div>
-      <div v-if="currentLessonStep.type === 'firstType'" class="layout-content-firstType">
-        <h1>First Typing of {{currentLessonStep.keys}}</h1>
-        <Keyboard></Keyboard>
+      <div v-if="lessonStepInfo.type === 'firstType'" class="layout-content-firstType">
+        <h1>First Typing of {{lessonStepInfo.keys}}</h1>
+        <TypingController :data="lessonStepInfo.data" @finished="handleFinished"></TypingController>
       </div>
-      <div v-if="currentLessonStep.type === 'exercise'" class="layout-content-exercise">
-        <h1>exercise of {{currentLessonStep.keys}}</h1>
-        <Keyboard></Keyboard>
+      <div v-if="lessonStepInfo.type === 'exercise'" class="layout-content-exercise">
+        <h1>exercise of {{lessonStepInfo.keys}}</h1>
+        <TypingController :data="lessonStepInfo.data" @finished="handleFinished"></TypingController>
       </div>
-      <div v-if="currentLessonStep.type === 'game'" class="layout-content-exercise">
-        <h1>exercise of {{currentLessonStep.keys}}</h1>
-        <Keyboard></Keyboard>
+      <div v-if="lessonStepInfo.type === 'review'" class="layout-content-review">
+        <h1>exercise of {{lessonStepInfo.keys}}</h1>
+        <TypingController :data="lessonStepInfo.data" @finished="handleFinished"></TypingController>
+      </div>
+      <div v-if="lessonStepInfo.type === 'game'" class="layout-content-game">
+        <h1>exercise of {{lessonStepInfo.keys}}</h1>
+        <GameController></GameController>
       </div>
     </Content>
   </Layout>
@@ -25,30 +31,34 @@
 
 
 <script>
-import lessonDatsFromServer from "../../static/lessonCards.js";
+import lessonListFromServer from "../../static/lessonsData/lessonList";
 
 export default {
   data() {
     return {
-      currentLessonId: 0,
-      currentLessonData: {},
-      currentLessonStepId: 0,
-      currentLessonStep: {}
+      lessonId: 0,
+      lessonStepId: 0,
+      lessonStepInfo: {}
     };
   },
   methods: {
-    getCurrentLessonData() {
-      this.currentLessonId = this.$store.state.currentLessonId;
-      return lessonDatsFromServer[this.currentLessonId];
+    getLessonStepInfo() {
+      const lessonInfo = lessonListFromServer[this.lessonId];
+      const lessonData = lessonInfo.data;
+      const lessonStepInfo = lessonData[this.lessonStepId - 1];
+      console.log("lessonStepInfo = ", lessonStepInfo);
+      return lessonStepInfo;
     },
-    getCurrentLessonStep() {
-      this.currentLessonStepId = this.$store.state.currentLessonStepId;
-      return this.currentLessonData[this.currentLessonStepId - 1];
+    handleFinished() {
+      this.lessonStepId++;
+      this.$store.commit("changCurrentLessonStepId", this.currentLessonStepId);
+      this.lessonStepInfo = this.getLessonStepInfo();
     }
   },
   mounted() {
-    this.currentLessonData = this.getCurrentLessonData();
-    this.currentLessonStep = this.getCurrentLessonStep();
+    this.lessonId = this.$store.state.currentLessonId;
+    this.lessonStepId = this.$store.state.currentLessonStepId;
+    this.lessonStepInfo = this.getLessonStepInfo();
   }
 };
 </script>
