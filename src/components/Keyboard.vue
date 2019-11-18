@@ -85,15 +85,15 @@ export default {
     keydown(e) {
       const key = this.getKeyElement(e);
       key.classList.add("pressed");
-      this.$emit("keydown", e.keyCode, e.code);
+      this.$emit("keydown", e.key);
     },
     keyup(e) {
       const key = this.getKeyElement(e);
       key.classList.remove("pressed");
-      this.$emit("keyup", e.keyCode, e.code);
+      this.$emit("keyup", e.key);
     },
     getKeyElement(e) {
-      let id = '';
+      let id = "";
       switch (e.keyCode) {
         case 16:
         case 17:
