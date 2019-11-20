@@ -20,7 +20,7 @@ const data_ch = [
         title: '练习：f和j',
         type: 'exercise',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'ios-clock-outline',
         data: [
             'f', 'f', 'f', 'j', 'j', 'j', 'f',
             ' ', 'f', 'j', ' ', 'j', 'f', ' ',
@@ -43,7 +43,7 @@ const data_ch = [
         title: '练习：d和k',
         type: 'exercise',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'ios-clock-outline',
         data: [
             'd', 'd', 'd', 'k', 'k', 'k', 'd',
             ' ', 'd', 'k', ' ', 'k', 'd', ' ',
@@ -58,7 +58,7 @@ const data_ch = [
         title: '复习：fjdk',
         type: 'review',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'md-trending-up',
         data: [
             'd', 'f', 'j', 'f', 'f',
             'k', 'j', 'd', 'f', 'j',
@@ -92,7 +92,7 @@ const data_ch = [
         title: '练习：s和l',
         type: 'exercise',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'ios-clock-outline',
         data: [
             's', 's', 's', 'l', 'l', 'l', 's',
             ' ', 's', 'l', ' ', 'l', 's', ' ',
@@ -107,7 +107,7 @@ const data_ch = [
         title: '复习：fjdksl',
         type: 'review',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'md-trending-up',
         data: [
             'd', 'k', 'l', 'd', 'k',
             'j', 'd', 'l', 's', 's',
@@ -128,7 +128,7 @@ const data_ch = [
         title: '练习：a和;',
         type: 'exercise',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'ios-clock-outline',
         data: [
             'a', 'a', 'a', ';', ';', ';', 'a',
             ' ', 'a', ';', ' ', ';', 'a', ' ',
@@ -143,7 +143,7 @@ const data_ch = [
         title: '复习：fjdksla;',
         type: 'review',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'md-trending-up',
         data: [
             'a', 'f', 'f', 'l', 'j',
             'd', 'f', 'j', 's', 'j',
@@ -177,7 +177,7 @@ const data_ch = [
         title: '练习：g和h',
         type: 'exercise',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'ios-clock-outline',
         data: [
             'g', 'g', 'g', 'h', 'h', 'h', 'g',
             ' ', 'g', 'h', ' ', 'h', 'g', ' ',
@@ -192,7 +192,7 @@ const data_ch = [
         title: '复习：fjdksla;gh',
         type: 'review',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'md-trending-up',
         data: [
             'd', 'g', 'f', 'k', 'h',
             's', 'l', 'a', 'g', 'a',
@@ -226,7 +226,7 @@ const data_ch = [
         title: '练习：r和u',
         type: 'exercise',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'ios-clock-outline',
         data: [
             'r', 'r', 'r', 'u', 'u', 'u', 'r',
             ' ', 'r', 'u', ' ', 'u', 'r', ' ',
@@ -249,7 +249,7 @@ const data_ch = [
         title: '练习：e和i',
         type: 'exercise',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'ios-clock-outline',
         data: [
             'e', 'e', 'e', 'i', 'i', 'i', 'e',
             ' ', 'e', 'i', ' ', 'i', 'e', ' ',
@@ -264,7 +264,7 @@ const data_ch = [
         title: '复习：ruei',
         type: 'review',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'md-trending-up',
         data: [
             'i', 'u', 'i', 'i', 'i',
             'i', 'i', 'e', 'r', 'u',
@@ -298,7 +298,7 @@ const data_ch = [
         title: '练习：w和o',
         type: 'exercise',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'ios-clock-outline',
         data: [
             'w', 'w', 'w', 'o', 'o', 'o', 'w',
             ' ', 'w', 'o', ' ', 'o', 'w', ' ',
@@ -313,7 +313,7 @@ const data_ch = [
         title: '复习：rueiwo',
         type: 'review',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'md-trending-up',
         data: [
             'i', 'i', 'i', 'o', 'e',
             'w', 'i', 'r', 'u', 'e',
@@ -334,7 +334,7 @@ const data_ch = [
         title: '练习：q和p',
         type: 'exercise',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'ios-clock-outline',
         data: [
             'q', 'q', 'q', 'p', 'p', 'p', 'q',
             ' ', 'q', 'p', ' ', 'p', 'q', ' ',
@@ -349,7 +349,7 @@ const data_ch = [
         title: '复习：rueiwoqp',
         type: 'review',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'md-trending-up',
         data: [
             'q', 'o', 'w', 'i', 'q',
             'o', 'w', 'w', 'p', 'r',
@@ -383,7 +383,7 @@ const data_ch = [
         title: '练习：t和y',
         type: 'exercise',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'ios-clock-outline',
         data: [
             't', 't', 't', 'y', 'y', 'y', 't',
             ' ', 't', 'y', ' ', 'y', 't', ' ',
@@ -398,7 +398,7 @@ const data_ch = [
         title: '复习：rueiwoqpty',
         type: 'review',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'md-trending-up',
         data: [
             'r', 'p', 'i', 'w', 'p',
             'u', 'p', 'r', 'w', 'q',
@@ -432,7 +432,7 @@ const data_ch = [
         title: '练习：v和m',
         type: 'exercise',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'ios-clock-outline',
         data: [
             'v', 'v', 'v', 'm', 'm', 'm', 'v',
             ' ', 'v', 'm', ' ', 'm', 'v', ' ',
@@ -455,7 +455,7 @@ const data_ch = [
         title: '练习：c和,',
         type: 'exercise',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'ios-clock-outline',
         data: [
             'c', 'c', 'c', ',', ',', ',', 'c',
             ' ', 'c', ',', ' ', ',', 'c', ' ',
@@ -470,7 +470,7 @@ const data_ch = [
         title: '复习：vmc,',
         type: 'review',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'md-trending-up',
         data: [
             'c', 'c', 'c', 'v', 'm',
             'm', 'v', 'm', ',', 'c',
@@ -504,7 +504,7 @@ const data_ch = [
         title: '练习：x和.',
         type: 'exercise',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'ios-clock-outline',
         data: [
             'x', 'x', 'x', '.', '.', '.', 'x',
             ' ', 'x', '.', ' ', '.', 'x', ' ',
@@ -519,7 +519,7 @@ const data_ch = [
         title: '复习：vmc,x.',
         type: 'review',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'md-trending-up',
         data: [
             'x', 'x', 'c', '.', '.',
             'm', 'x', 'x', 'x', 'm',
@@ -540,7 +540,7 @@ const data_ch = [
         title: '练习：z和/',
         type: 'exercise',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'ios-clock-outline',
         data: [
             'z', 'z', 'z', '/', '/', '/', 'z',
             ' ', 'z', '/', ' ', '/', 'z', ' ',
@@ -555,7 +555,7 @@ const data_ch = [
         title: '复习：vmc,x.z/',
         type: 'review',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'md-trending-up',
         data: [
             '/', 'm', 'm', ',', 'z',
             ',', 'c', '.', 'v', ',',
@@ -589,7 +589,7 @@ const data_ch = [
         title: '练习：b和n',
         type: 'exercise',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'ios-clock-outline',
         data: [
             'b', 'b', 'b', 'n', 'n', 'n', 'b',
             ' ', 'b', 'n', ' ', 'n', 'b', ' ',
@@ -604,7 +604,7 @@ const data_ch = [
         title: '复习：vmc,x.z/bn',
         type: 'review',
         isLock: true,
-        icon: 'ios-up',
+        icon: 'md-trending-up',
         data: [
             'c', 'v', '/', 'v', 'n',
             ',', 'v', 'z', 'z', 'm',
