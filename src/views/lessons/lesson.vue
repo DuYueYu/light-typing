@@ -36,7 +36,7 @@
 </template>
 
 <script>
-	import lessonCardsDataFromServer  from '../../static/lessonCards.js';
+    import lessonListFromServer  from '../../static/lessonsData/lessonList.js'
 	import Util from '../../libs/util.js';
 	
 	export default {
@@ -74,13 +74,13 @@
 				this.$store.commit("changCurrentLessonStepId", id);
 				this.$router.push("/lessons/play");
 			},
-			getLessonCardsData(){
+			getLessonList(){
 				let lessonId = this.$store.state.currentLessonId;
-				return lessonCardsDataFromServer[lessonId];
-			}
+				return lessonListFromServer[lessonId];
+			},
 		},
 		mounted(){
-			this.lessonCards = this.getLessonCardsData();
+			this.lessonCards = this.getLessonList().data;
 		}
 	}
 </script>
@@ -94,7 +94,6 @@
         margin: 0px 0px;
         background: url('/src/images/bg.png') no-repeat;
         background-size: 100% 100%;
-		.content-summary {}
 		.content-lessonsNav {
 			position: fixed;
 			right: 10%;

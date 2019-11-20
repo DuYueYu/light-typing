@@ -23,7 +23,7 @@
 </template>
 
 <script>
-	import lesson_list_from_server from "../../static/lessonList.js";
+	import lesson_list_from_server from "../../static/lessonsData/lessonList.js";
 	
 	export default{
 		data(){

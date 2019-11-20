@@ -36,7 +36,7 @@
 </template>
 
 <script>
-	import lesson_list from "../../static/lessonList.js";
+	import lesson_list from "../../static/lessonsData/lessonList.js";
 	
 	export default{
 		data(){
