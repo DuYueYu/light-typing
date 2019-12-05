@@ -27,6 +27,9 @@ export default {
 
 <style scoped lang="less">
 .layout {
+  @media screen and (min-height: 901px) and (max-height: 1080px) {
+    min-height: 762px;
+  }
   position: relative;
   .layout-container {
     padding: 50px 10px;
