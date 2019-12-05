@@ -14,6 +14,8 @@ import Key from "./components/Key"
 import Keyboard from "./components/Keyboard"
 import VideoController from './components/VideoController'
 import TypingController from "./components/TypingController"
+import FirstTypeController from "./components/FirstTypeController"
+import ExerciseController from "./components/ExerciseController"
 import GameController from './components/GameController'
 
 Vue.use(VueRouter);
@@ -25,6 +27,8 @@ Vue.component('Key', Key);
 Vue.component('Keyboard', Keyboard);
 Vue.component('VideoController', VideoController);
 Vue.component('TypingController', TypingController);
+Vue.component('FirstTypeController', FirstTypeController);
+Vue.component('ExerciseController', ExerciseController);
 Vue.component('GameController', GameController);
 
 //vue-router---------------------------
