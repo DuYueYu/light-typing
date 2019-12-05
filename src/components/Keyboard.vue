@@ -78,6 +78,12 @@
 
 <script>
 export default {
+  props: {
+    activeKey: {
+        type: String,
+        default: ""
+    }
+  },
   data() {
     return {};
   },
@@ -86,6 +92,7 @@ export default {
       const key = this.getKeyElement(e);
       key.classList.add("pressed");
       this.$emit("keydown", e.key);
+      setTimeout(this.keyup, 500, e);
     },
     keyup(e) {
       const key = this.getKeyElement(e);
@@ -108,11 +115,9 @@ export default {
   },
   mounted() {
     window.addEventListener("keydown", this.keydown);
-    window.addEventListener("keyup", this.keyup);
   },
   beforeDestroy() {
     window.removeEventListener("keydown", this.keydown);
-    window.removeEventListener("keyup", this.keyup);
   }
 };
 </script>
@@ -126,8 +131,10 @@ export default {
 }
 
 .layout {
+  border: lightgrey 2px solid;
+  border-radius: 10px;
+  padding: 10px 8px;
   .layout-keyboard {
-    border: lightgrey 2px solid;
     width: @key_commom_width*16.6;
     button {
       text-align: center;
