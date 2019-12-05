@@ -1,40 +1,40 @@
 <template>
-	<Layout class='layout'>
-		<Content class='layout-container'>
-			<LoginLightTyping @succeeded="handleSuccueeded"></LoginLightTyping>
-		</Content>
-	</Layout>
+  <Layout class="layout">
+    <Content class="layout-container">
+      <LoginBox @succeeded="handleSuccueeded"></LoginBox>
+    </Content>
+  </Layout>
 </template>
 
 <script>
-	import LoginLightTyping from '../components/LoginLightTyping.vue'
-	
-	export default {
-		data(){
-			return{
-				
-			}
-		},
-		components: {
-			LoginLightTyping
-		},
-		methods:{
-			handleSuccueeded(info){
-				console.log(info);
-				this.$router.push('/begin');
-			}
-		},
+import LoginBox from "../components/LoginBox.vue";
 
-	}
+export default {
+  data() {
+    return {};
+  },
+  components: {
+    LoginBox
+  },
+  methods: {
+    handleSuccueeded(info) {
+      console.log(info);
+      this.$router.push("/begin");
+    }
+  }
+};
 </script>
 
 <style scoped lang="less">
-	.layout {
-		position: relative;
-		.layout-container{
-			padding: 50px 10px;
-			text-align: center;
-			min-height: 620px;
-		}
-	}
+.layout {
+  @media screen and (min-height: 901px) and (max-height: 1080px) {
+    min-height: 762px;
+  }
+  position: relative;
+  .layout-container {
+    padding: 50px 10px;
+    text-align: center;
+    min-height: 620px;
+  }
+}
 </style>
