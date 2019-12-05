@@ -16,5 +16,6 @@ npm run dev
 ```
 ### Production(Build)
 ```bush
-npm run build
+npm run build:dev
+npm run build:prod
 ```
