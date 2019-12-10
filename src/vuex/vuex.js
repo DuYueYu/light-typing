@@ -1,8 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import product_data_from_server from './static/product.js';
+import product_data_from_server from './data-from-server/product';
 Vue.use(Vuex);
-
 
 function getFilterArray (array) {
     const res = [];
@@ -17,7 +16,7 @@ function getFilterArray (array) {
     return res;
 }
 
-const store = new Vuex.Store({
+export default new Vuex.Store({
 	state:{
 		//打字课程：
 		myLessonList:[],
@@ -99,5 +98,3 @@ const store = new Vuex.Store({
 		//打字课程：
 	}
 });
-
-export default store;
