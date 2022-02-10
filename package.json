@@ -41,7 +41,7 @@
     "iview-loader": "^1.3.0",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "sass-loader": "^8.0.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
